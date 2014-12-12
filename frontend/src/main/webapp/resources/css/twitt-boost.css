@@ -1,0 +1,10 @@
+.login-box {
+    width: 250px;
+    margin-top: 200px;
+    background-image: -webkit-linear-gradient(top,#FFFFFF 0,#F5F5F5 100%);
+    background-image: -moz-linear-gradient(top,#FFFFFF 0,#F5F5F5 100%);
+}
+
+.space-below {
+    margin-bottom: 5px;
+}

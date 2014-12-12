@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html ng-app='twitter-boost-app'>
+
+<head>
+
+    <title>Twitter Boost App Login</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/css/bootstrap-theme.min.css">
+    <!-- Twitter Boost CSS -->
+    <link rel="stylesheet" href="resources/css/twitt-boost.css"/>
+
+</head>
+
+<body ng-cloak class="ng-cloak">
+
+<div class="center-block well login-box" ng-controller='AppUserController'>
+
+    <fieldset ng-show='showLoginForm'>
+        <input class="form-control space-below" type="text" placeholder="Any Username...">
+        <input class="form-control space-below" type="password" placeholder="Any Password...">
+        <button class="btn btn-primary" ng-click='testUser()'>Login</button>
+    </fieldset>
+
+    <span ng-hide='showLoginForm'>
+        <strong>Welcome, you sexy bastard!</strong>
+    </span>
+
+</div>
+
+    <!-------SCRIPTS-------->
+
+    <!-- jQuery -->
+    <script src="resources/js/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="resources/js/bootstrap/bootstrap.min.js"></script>
+
+    <!-- Angular JS -->
+    <script src="resources/js/angular/angular.min.js"></script>
+
+    <!-- Main Application JS -->
+    <script src="resources/js/twitter-boost.app.js"></script>
+    <!-- Controllers -->
+    <script src="resources/js/controllers/appuser.controller.js"></script>
+    <!-- Services -->
+    <script src="resources/js/services/appuser.service.js"></script>
+    <!-- Other -->
+    <script src="resources/js/config.js"></script>
+
+</body>
+
+</html>
