@@ -20,6 +20,24 @@
             </column>
         </createTable>
 
+        <createTable tableName="TWEET">
+            <column autoIncrement="true" name="ID" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="USERNAME" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CONTENT" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DATE" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CATEGORIES" type="varchar(50)">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+
     </changeSet>
 
     <changeSet id="2" author="adrian.zamfirescu">

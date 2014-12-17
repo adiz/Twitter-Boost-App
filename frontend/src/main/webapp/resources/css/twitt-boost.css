@@ -1,3 +1,10 @@
+.container-box {
+    width: 1050px;
+    margin-top: 120px;
+    background-image: -webkit-linear-gradient(top,#FFFFFF 0,#F5F5F5 100%);
+    background-image: -moz-linear-gradient(top,#FFFFFF 0,#F5F5F5 100%);
+}
+
 .login-box {
     width: 250px;
     margin-top: 200px;
@@ -5,6 +12,40 @@
     background-image: -moz-linear-gradient(top,#FFFFFF 0,#F5F5F5 100%);
 }
 
+.main-title {
+    margin-bottom: 45px;
+}
+
+.main-div {
+    width: 700px;
+}
+
+.tWidth {
+    width: 200px;
+}
+
 .space-below {
-    margin-bottom: 5px;
+    margin-bottom: 25px;
+}
+
+.lower-space-below {
+    margin-bottom: 10px;
+}
+
+.custom-label {
+    color: blue;
+}
+
+.filters {
+    margin-top: 20px;
+}
+
+.tweet-container {
+    background-image: -webkit-linear-gradient(top,#FFFFFF 0,#F5F5F5 100%);
+    background-image: -moz-linear-gradient(top,#FFFFFF 0,#F5F5F5 100%);
+}
+
+.tweet-user-container {
+    color: blue;
+    font-weight: bold;
 }

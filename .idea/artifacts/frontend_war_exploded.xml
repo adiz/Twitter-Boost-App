@@ -59,6 +59,7 @@
           <element id="archive" name="services-1.0.jar">
             <element id="module-output" name="services" />
           </element>
+          <element id="library" level="project" name="Maven: org.twitter4j:twitter4j-core:4.0.1" />
           <element id="archive" name="support-1.0.jar">
             <element id="module-output" name="support" />
           </element>

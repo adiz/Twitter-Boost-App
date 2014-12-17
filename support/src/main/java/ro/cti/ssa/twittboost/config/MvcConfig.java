@@ -31,7 +31,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter{
 
     @Override
 	public void addViewControllers(ViewControllerRegistry viewControllerRegistry){
-        viewControllerRegistry.addViewController("/").setViewName("login.html");
+        viewControllerRegistry.addViewController("/").setViewName("index.html");
     }
 
     @Override
