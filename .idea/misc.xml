@@ -15,10 +15,6 @@
       </facet-type>
     </autodetection-disabled>
   </component>
-  <component name="Git.Settings">
-    <option name="CHECKOUT_INCLUDE_TAGS" value="false" />
-    <option name="UPDATE_CHANGES_POLICY" value="STASH" />
-  </component>
   <component name="IdProvider" IDEtalkID="7B290A7E0F5AC39A347B2DC3259120A2" />
   <component name="JavadocGenerationManager">
     <option name="OUTPUT_DIRECTORY" />
