@@ -1,6 +1,7 @@
 package ro.cti.ssa.twittboost.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import ro.cti.ssa.twittboost.model.AppUser;
 
@@ -10,4 +11,8 @@ import ro.cti.ssa.twittboost.model.AppUser;
  */
 @Repository
 public interface AppUserRepository extends JpaRepository<AppUser,Integer>{
+
+    @Query
+    AppUser findByUsername(String username);
+
 }

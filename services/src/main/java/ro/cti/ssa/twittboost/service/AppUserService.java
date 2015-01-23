@@ -16,9 +16,9 @@ public class AppUserService implements IAppUserService {
     @Autowired
     private AppUserRepository appUserRepository;
 
-    public AppUser getTestUser(){
+    public AppUser getUserByUsername(String username){
 
-        return appUserRepository.findOne(1);
+        return appUserRepository.findByUsername(username);
 
     }
 

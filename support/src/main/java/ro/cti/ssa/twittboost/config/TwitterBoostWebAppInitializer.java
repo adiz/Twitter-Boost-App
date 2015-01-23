@@ -10,7 +10,7 @@ public class TwitterBoostWebAppInitializer extends AbstractAnnotationConfigDispa
 
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[] {DaoConfig.class, ServiceConfig.class};
+        return new Class[] {DaoConfig.class, ServiceConfig.class, SecurityConfig.class};
     }
 
     @Override

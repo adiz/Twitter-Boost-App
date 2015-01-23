@@ -8,6 +8,6 @@ import ro.cti.ssa.twittboost.model.AppUser;
  */
 public interface IAppUserService {
 
-    AppUser getTestUser();
+    AppUser getUserByUsername(String username);
 
 }

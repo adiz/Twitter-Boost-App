@@ -14,6 +14,7 @@ public class AppUser extends BaseEntity{
 
     private String username;
     private String password;
+    private String role;
 
     @Column(name = "USERNAME")
     public String getUsername() {
@@ -32,4 +33,14 @@ public class AppUser extends BaseEntity{
     public void setPassword(String password) {
         this.password = password;
     }
+
+    @Column(name = "ROLE")
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
 }

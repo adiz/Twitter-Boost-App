@@ -23,7 +23,7 @@ public class AppUserController {
     @ResponseBody
     public AppUser getTestAppUser(){
 
-        return appUserService.getTestUser();
+        return new AppUser();
 
     }
 

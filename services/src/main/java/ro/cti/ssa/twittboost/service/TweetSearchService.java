@@ -106,10 +106,10 @@ public class TweetSearchService implements ITweetSearchService{
     public static void main(String[] args){
         // test
         SearchForm sf = new SearchForm();
-        sf.setUsername("BestLifeNotes");
+        sf.setUsername("lift_behappy");
         List<String> filters = new ArrayList<String>();
-        filters.add("happy");
         filters.add("");
+        filters.add("zinera");
         filters.add("");
         sf.setFilters(filters);
         new TweetSearchService().search(sf);
