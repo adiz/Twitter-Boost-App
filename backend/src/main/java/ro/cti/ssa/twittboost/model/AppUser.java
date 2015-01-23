@@ -1,8 +1,10 @@
 package ro.cti.ssa.twittboost.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author adrian.zamfirescu
@@ -10,10 +12,12 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "APPUSER")
-public class AppUser extends BaseEntity{
+public class AppUser extends BaseEntity {
 
     private String username;
     private String password;
+    @JsonIgnore
+    private Set<FilterGroupPreference> savedPreferences = new HashSet<FilterGroupPreference>();
 
     @Column(name = "USERNAME")
     public String getUsername() {
@@ -31,5 +35,14 @@ public class AppUser extends BaseEntity{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    public Set<FilterGroupPreference> getSavedPreferences() {
+        return savedPreferences;
+    }
+
+    public void setSavedPreferences(Set<FilterGroupPreference> savedPreferences) {
+        this.savedPreferences = savedPreferences;
     }
 }

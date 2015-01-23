@@ -1,6 +1,7 @@
 package ro.cti.ssa.twittboost.framework;
 
 import ro.cti.ssa.twittboost.dto.SearchForm;
+import ro.cti.ssa.twittboost.model.FilterGroupPreference;
 import ro.cti.ssa.twittboost.model.Tweet;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
  */
 public interface ITweetSearchService {
 
-    List<Tweet> search(SearchForm searchForm);
+    List<Tweet> searchByFormFilters(SearchForm searchForm);
 
+    List<Tweet> searchBySavedFilters(FilterGroupPreference filterGroupPreference);
 }

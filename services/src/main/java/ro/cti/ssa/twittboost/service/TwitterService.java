@@ -6,6 +6,7 @@ import ro.cti.ssa.twittboost.dao.TweetRepository;
 import ro.cti.ssa.twittboost.dto.SearchForm;
 import ro.cti.ssa.twittboost.framework.ITweetSearchService;
 import ro.cti.ssa.twittboost.framework.ITwitterService;
+import ro.cti.ssa.twittboost.model.FilterGroupPreference;
 import ro.cti.ssa.twittboost.model.Tweet;
 
 import java.util.List;
@@ -27,8 +28,14 @@ public class TwitterService implements ITwitterService {
         return tweetRepository.findAll();
     }
 
-    public List<Tweet> getSearchedTweets(SearchForm searchForm){
-        return tweetSearchService.search(searchForm);
+    public List<Tweet> getSearchedTweetsInForm(SearchForm searchForm) {
+        return tweetSearchService.searchByFormFilters(searchForm);
     }
+
+    @Override
+    public List<Tweet> getTweetsForSavedFilters(FilterGroupPreference filterGroupPreference) {
+        return tweetSearchService.searchBySavedFilters(filterGroupPreference);
+    }
+
 
 }

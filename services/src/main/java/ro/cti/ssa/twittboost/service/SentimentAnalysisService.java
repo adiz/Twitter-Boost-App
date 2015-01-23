@@ -60,7 +60,11 @@ public class SentimentAnalysisService implements ISentimentAnalysisService {
         JsonElement jelement = new JsonParser().parse(jsonLine);
         JsonObject jobject = jelement.getAsJsonObject();
         jobject = jobject.getAsJsonObject("output");
-        String result = jobject.get("result").toString();
+        String result = null;
+        if (jobject.has("result")) {
+            result = jobject.get("result").toString();
+        } else
+            result = "undefined";
         return result;
     }
 }

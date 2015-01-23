@@ -16,10 +16,12 @@ public class AppUserService implements IAppUserService {
     @Autowired
     private AppUserRepository appUserRepository;
 
-    public AppUser getTestUser(){
-
+    public AppUser getTestUser() {
         return appUserRepository.findOne(1);
+    }
 
+    public AppUser getUserByName(String userName) {
+        return appUserRepository.getUserByName(userName);
     }
 
 }

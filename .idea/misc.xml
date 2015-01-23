@@ -15,6 +15,9 @@
       </facet-type>
     </autodetection-disabled>
   </component>
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/frontend" />
+  </component>
   <component name="IdProvider" IDEtalkID="7B290A7E0F5AC39A347B2DC3259120A2" />
   <component name="JavadocGenerationManager">
     <option name="OUTPUT_DIRECTORY" />
@@ -48,4 +51,3 @@
   </component>
   <component name="WebServicesPlugin" addRequiredLibraries="true" />
 </project>
-

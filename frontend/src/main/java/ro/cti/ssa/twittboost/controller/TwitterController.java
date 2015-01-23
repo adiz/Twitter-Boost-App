@@ -1,13 +1,13 @@
 package ro.cti.ssa.twittboost.controller;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import ro.cti.ssa.twittboost.dto.SearchForm;
 import ro.cti.ssa.twittboost.framework.ITwitterService;
+import ro.cti.ssa.twittboost.model.FilterGroupPreference;
 import ro.cti.ssa.twittboost.model.Tweet;
+import ro.cti.ssa.twittboost.service.FilterGroupService;
 
 import java.util.List;
 
@@ -22,16 +22,26 @@ public class TwitterController {
     @Autowired
     private ITwitterService twitterService;
 
+    @Autowired
+    private FilterGroupService filterGroupService;
+
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
-    public List<Tweet> getAllTweets(){
+    public List<Tweet> getAllTweets() {
         return twitterService.getAllTweets();
     }
 
-    @RequestMapping(value = "/search", method = RequestMethod.POST)
+    @RequestMapping(value = "/searchByFormFilters", method = RequestMethod.POST)
     @ResponseBody
-    public List<Tweet> getSearchedTweets(@RequestBody SearchForm searchForm){
-        return twitterService.getSearchedTweets(searchForm);
+    public List<Tweet> getSearchedTweets(@RequestBody SearchForm searchForm) {
+        return twitterService.getSearchedTweetsInForm(searchForm);
+    }
+
+    @RequestMapping(value = "/searchByFilterGroup/{filterGroupId}", method = RequestMethod.POST)
+    @ResponseBody
+    public List<Tweet> getTweetsForSavedFilters(@PathVariable Integer filterGroupId) {
+        FilterGroupPreference filterGroupPreference = filterGroupService.getFilterGroupById(filterGroupId);
+        return twitterService.getTweetsForSavedFilters(filterGroupPreference);
     }
 
 }

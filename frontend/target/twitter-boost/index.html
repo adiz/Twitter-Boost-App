@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html ng-app='twitter-boost-app'>
+
+<head>
+
+    <title>Twitter Boost App Login</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/css/bootstrap-theme.min.css">
+
+    <!-- Twitter Boost CSS -->
+    <link rel="stylesheet" href="resources/css/twitt-boost.css"/>
+
+    <!-- added by me -->
+
+
+</head>
+
+<body ng-cloak class="ng-cloak">
+
+<div class="center-block well container-box" ng-controller='TwitterController'>
+
+    <h1>
+        Boost your tweet search!
+    </h1>
+
+    <h3 class="main-title">
+        Search tweets with the advanced search filters and see what people say and how they 'feel'.
+    </h3>
+
+    <label>Saved Twitter Filters</label>
+
+
+    <div class="filters">
+        <div class="filter" ng-repeat="filterGroup in userSavedFilterGroups">
+            <div>
+                <label class="label label-primary">{{filterGroup.viewDescription}}</label>
+                <button class="btn" ng-click="searchTweetsForFilterGroup(filterGroup)"><i class="glyphicon glyphicon-search"></i> Search Tweets
+                </button>
+                <button class="btn" ng-click="deleteFilterGroup(filterGroup)"><i class="glyphicon glyphicon-trash"></i> Delete
+                </button>
+            </div>
+        </div>
+
+        <div class="well main-div">
+
+
+
+            <label>Type in Twitter username</label>
+            <input class="form-control tWidth space-below"
+                   type="text" placeholder="Twitter username..."
+                   ng-model="searchForm.username">
+
+            <label>Add filters</label>
+
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                        aria-expanded="true">
+                    Filters
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    <li role="presentation" ng-repeat="filter in filters" ng-click="addFilterInput($index)">
+                        <a role="menuitem" tabindex="-1" href="#">
+                            <i class="glyphicon glyphicon-plus" ng-hide="filterShows[$index]"></i>
+                            <i class="glyphicon glyphicon-minus" ng-show="filterShows[$index]"></i> {{filter}}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="filters">
+                <div class="filter" ng-repeat="filter in filters">
+                    <div ng-show="filterShows[{{$index}}]">
+                        <label class="label label-primary">{{filter}}</label>
+                        <input class="form-control tWidth lower-space-below"
+                               type="text"
+                               placeholder="{{filter}}..."
+                               ng-model="searchForm.filters[$index]">
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn btn-primary" ng-click="openSaveFilterGroupDialog()"><i class="glyphicon glyphicon-plus"></i>
+                Save
+                Filters
+            </button>
+
+            <div id="saveFilterGroupDialog">
+
+            <textarea  ng-show="showErrorMessage"
+                       ng-model="saveFilterGroupErrorMessage"></textarea>
+                </br>
+
+                <label class="label label-primary">Filter Group Description</label>
+                <input id="inputFilterGroupDescription" height="49px" class="form-control tWidth lower-space-below"
+                       type="text"
+                       placeholder="Filter Group Description..."
+                       ng-model="saveFilterGroupForm.filterGroupDescription">
+                <button class="btn btn-primary" ng-click="saveFilterGroup()"><i class="glyphicon glyphicon-search"></i> Ok
+                </button>
+
+            </div>
+
+            <button class="btn btn-primary" ng-click="searchTweets()"><i class="glyphicon glyphicon-search"></i> Search
+            </button>
+
+            <div class="tweets" ng-show="tweets.length>0">
+
+                <h3>Results</h3>
+                <hr>
+                <div ng-repeat="tweet in tweets | orderBy:'date':true" class="well tweet-container">
+                    <div>
+                        <span class="tweet-user-container">@{{tweet.username}}</span>, on
+                        <strong>{{tweet.date}}</strong> - said:
+                    </div>
+                    {{tweet.content}}
+                    <hr>
+                    <strong>Sentiment analysis: {{tweet.categories}}</strong>
+                </div>
+
+            </div>
+
+
+            <div class="tweets" ng-show="showNoResultsMessage">
+                <h3>No results found.</h3>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <!-------SCRIPTS-------->
+
+    <!-- jQuery -->
+    <script src="resources/js/jquery/jquery.min.js"></script>
+
+    <!-- jQuery UI-->
+    <script src="resources/js/jquery/jquery-ui.js"></script>
+    <link rel="stylesheet" href="resources/css/jquery-ui.css">
+
+    <!-- Bootstrap JS -->
+    <script src="resources/js/bootstrap/bootstrap.min.js"></script>
+
+
+    <!-- Angular JS -->
+    <script src="resources/js/angular/angular.min.js"></script>
+
+    <!-- Main Application JS -->
+    <script src="resources/js/twitter-boost.app.js"></script>
+
+    <!-- UI Bootstrap JS -->
+    <script src="resources/js/bootstrap/ui-bootstrap-tpls-0.9.0.min.js"></script>
+
+    <!-- Controllers -->
+    <script src="resources/js/controllers/appuser.controller.js"></script>
+    <script src="resources/js/controllers/twitter.controller.js"></script>
+    <!-- Services -->
+    <script src="resources/js/services/appuser.service.js"></script>
+    <script src="resources/js/services/twitter.service.js"></script>
+    <script src="resources/js/services/filterGroups.service.js"></script>
+    <!-- Other -->
+    <script src="resources/js/config.js"></script>
+
+</body>
+
+</html>

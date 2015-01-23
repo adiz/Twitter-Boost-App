@@ -1,7 +1,9 @@
 package ro.cti.ssa.twittboost.framework;
 
 import ro.cti.ssa.twittboost.dto.SearchForm;
+import ro.cti.ssa.twittboost.model.FilterGroupPreference;
 import ro.cti.ssa.twittboost.model.Tweet;
+
 import java.util.List;
 
 /**
@@ -12,6 +14,7 @@ public interface ITwitterService {
 
     List<Tweet> getAllTweets();
 
-    List<Tweet> getSearchedTweets(SearchForm searchForm);
+    List<Tweet> getSearchedTweetsInForm(SearchForm searchForm);
 
+    List<Tweet> getTweetsForSavedFilters(FilterGroupPreference filterGroupPreference);
 }
