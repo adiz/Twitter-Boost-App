@@ -26,14 +26,41 @@
 
 <div class="center-block well login-box" ng-controller='LoginController'>
 
-    <fieldset>
-        <input class="form-control login-space-below" type="text" placeholder="Username..." ng-model="user.username">
-        <input class="form-control login-space-below" type="password" placeholder="Password..." ng-model="user.password">
-        <button class="btn btn-primary" ng-click='loginUser()'>Login</button>
-    </fieldset>
+    <div ng-show="showLoginForm">
 
-    <div class="center-block alert alert-danger alert-below" role="alert" ng-show="error">
-        <strong>{{error}}</strong>
+        <fieldset>
+            <input class="form-control login-space-below" type="text" placeholder="Username..." ng-model="user.username">
+            <input class="form-control login-space-below" type="password" placeholder="Password..." ng-model="user.password">
+            <button class="btn btn-primary" ng-click='loginUser()'>Login</button>
+        </fieldset>
+
+        <div class="center-block alert alert-danger alert-below" role="alert" ng-show="loginError">
+            <strong>{{loginError}}</strong>
+        </div>
+
+        <div class="register-text" ng-click="setRegisterView()">Don't have an account?</br> Create it here.</div>
+
+    </div>
+
+    <div ng-hide="showLoginForm">
+
+        <h1>Register:</h1>
+        <hr>
+        <fieldset ng-hide="registerSuccess">
+            <label>Username: </label><input class="form-control login-space-below" type="text" ng-model="user.username">
+            <label>Password: </label><input class="form-control login-space-below" type="password" ng-model="user.password">
+            <button class="btn btn-primary" ng-click='registerUser()'>Submit</button>
+        </fieldset>
+
+        <div class="center-block alert alert-danger alert-below" role="alert" ng-show="registerError">
+            <strong>{{registerError}}</strong>
+        </div>
+        <div class="center-block alert alert-success alert-below" role="alert" ng-show="registerSuccess">
+            <strong>{{registerSuccess}}</strong>
+        </div>
+
+        <div class="register-text" ng-click="setLoginView()">Go back to login page.</div>
+
     </div>
 
 </div>

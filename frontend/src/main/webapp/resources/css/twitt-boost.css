@@ -37,6 +37,16 @@
     margin-bottom: 0;
 }
 
+.register-text {
+    cursor: pointer;
+    color: #0033cc;
+    font-size: small;
+    margin-top: 15px;
+}
+.register-text:hover {
+    text-decoration: underline;
+}
+
 .header-welcome {
     color: white;
     font-size: 20px;
