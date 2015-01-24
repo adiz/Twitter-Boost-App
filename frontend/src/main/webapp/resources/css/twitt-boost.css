@@ -7,7 +7,7 @@
 
 .login-box {
     width: 250px;
-    margin-top: 200px;
+    margin-top: 250px;
     background-image: -webkit-linear-gradient(top,#FFFFFF 0,#F5F5F5 100%);
     background-image: -moz-linear-gradient(top,#FFFFFF 0,#F5F5F5 100%);
 }
@@ -20,12 +20,68 @@
     width: 700px;
 }
 
+.saved-filters-div {
+    width: 500px;
+}
+
 .tWidth {
     width: 200px;
 }
 
 .space-below {
     margin-bottom: 25px;
+}
+
+.login-space-below {
+    margin-bottom: 5px;
+}
+
+.alert-below {
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.register-text {
+    cursor: pointer;
+    color: #0033cc;
+    font-size: small;
+    margin-top: 15px;
+}
+.register-text:hover {
+    text-decoration: underline;
+}
+
+.header-welcome {
+    color: white;
+    font-size: 20px;
+    padding-top: 8px;
+    padding-left: 7px;
+}
+
+.header-name {
+    color: #51A5ED;
+    font-family: cursive;
+}
+
+.logout-button {
+    padding-bottom: 17px;
+    padding-top: 17px;
+    padding-right: 30px;
+    padding-left: 10px;
+    font-weight: bold;
+    color: rgb(228, 223, 223);
+}
+
+.logout-button:hover {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+
+.img-container {
+    position: absolute;
+    top: 50px;
+    right: 475px;
 }
 
 .lower-space-below {
@@ -48,4 +104,15 @@
 .tweet-user-container {
     color: blue;
     font-weight: bold;
+}
+
+.ui-dialog .ui-widget-header {
+    background: #333;
+    border: 1px solid #333;
+    color: #333;
+    font-weight: bold;
+}
+
+.ui-dialog  .ui-dialog-title {
+	color: #ffffff;
 }

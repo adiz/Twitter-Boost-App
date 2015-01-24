@@ -1,5 +1,6 @@
 package ro.cti.ssa.twittboost.framework;
 
+import ro.cti.ssa.twittboost.exception.AppUserCreationException;
 import ro.cti.ssa.twittboost.model.AppUser;
 
 /**
@@ -8,6 +9,8 @@ import ro.cti.ssa.twittboost.model.AppUser;
  */
 public interface IAppUserService {
 
-    AppUser getTestUser();
+    AppUser getUserByUsername(String username);
+
+    boolean registerAppUser(AppUser appUser) throws AppUserCreationException;
 
 }

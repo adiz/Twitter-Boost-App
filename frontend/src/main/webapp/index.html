@@ -4,7 +4,7 @@
 
 <head>
 
-    <title>Twitter Boost App Login</title>
+    <title>Twitter Boost App</title>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,12 +17,23 @@
     <!-- Twitter Boost CSS -->
     <link rel="stylesheet" href="resources/css/twitt-boost.css"/>
 
-    <!-- added by me -->
-
+    <!-- JQuery UI  CSS -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 
 </head>
 
-<body ng-cloak class="ng-cloak">
+<body ng-cloak class="ng-cloak" ng-controller='AppUserController'>
+
+<nav class="navbar navbar-inverse navbar-fixed-top navbar-responsive">
+    <ul class="nav navbar-nav">
+        <li class="header-welcome">Logged in as: <span class="header-name">{{user.username}}</span></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li class="header-welcome">
+            <span class="logout-button" ng-click="logout()">Log out</span>
+        </li>
+    </ul>
+</nav>
 
 <div class="center-block well container-box" ng-controller='TwitterController'>
 
@@ -34,22 +45,29 @@
         Search tweets with the advanced search filters and see what people say and how they 'feel'.
     </h3>
 
-    <label>Saved Twitter Filters</label>
+    <div class="well">
 
 
-    <div class="filters">
-        <div class="filter" ng-repeat="filterGroup in userSavedFilterGroups">
-            <div>
-                <label class="label label-primary">{{filterGroup.viewDescription}}</label>
-                <button class="btn" ng-click="searchTweetsForFilterGroup(filterGroup)"><i class="glyphicon glyphicon-search"></i> Search Tweets
-                </button>
-                <button class="btn" ng-click="deleteFilterGroup(filterGroup)"><i class="glyphicon glyphicon-trash"></i> Delete
-                </button>
+
+        <div class="filters">
+            <label>Saved Twitter Filters</label>
+            <div class="well" ng-repeat="filterGroup in userSavedFilterGroups">
+                <div>
+                    <label class="label label-primary">{{filterGroup.viewDescription}}</label>
+                    <div style="margin-top: 10px;margin-left: 20px;">
+                        <button class="btn" ng-click="searchTweetsForFilterGroup(filterGroup)"><i
+                                class="glyphicon glyphicon-search"></i> Search Tweets
+                        </button>
+                        <button class="btn" ng-click="deleteFilterGroup(filterGroup)"><i class="glyphicon glyphicon-trash"></i>
+                            Delete
+                        </button>
+
+                    </div>
+                </div>
             </div>
         </div>
 
         <div class="well main-div">
-
 
 
             <label>Type in Twitter username</label>
@@ -75,29 +93,43 @@
                 </ul>
             </div>
 
-            <div class="filters">
-                <div class="filter" ng-repeat="filter in filters">
-                    <div ng-show="filterShows[{{$index}}]">
-                        <label class="label label-primary">{{filter}}</label>
-                        <input class="form-control tWidth lower-space-below"
-                               type="text"
-                               placeholder="{{filter}}..."
-                               ng-model="searchForm.filters[$index]">
+            <div>
+                <div class="filters">
+                    <div class="filter" ng-repeat="filter in filters">
+                        <div ng-show="filterShows[{{$index}}]">
+                            <label class="label label-primary">{{filter}}</label>
+                            <input class="form-control tWidth lower-space-below"
+                                   type="text"
+                                   placeholder="{{filter}}..."
+                                   ng-model="searchForm.filters[$index]">
+                        </div>
                     </div>
                 </div>
+
+                <button style="float: right;" class="btn btn-primary " ng-click="openSaveFilterGroupDialog()"><i
+                        class="glyphicon glyphicon-plus"></i>
+                    Save
+                    Filters
+                </button>
+
+                <div style="float: right;">
+                    <button class="btn btn-primary" ng-click="searchTweets()"><i class="glyphicon glyphicon-search"></i> Search
+                    </button>
+                </div>
+
+                <button class="btn" ng-click="resetFormFilters()"><i class="glyphicon glyphicon-refresh"></i>
+                    Reset Form
+                </button>
             </div>
-
-            <button class="btn btn-primary" ng-click="openSaveFilterGroupDialog()"><i class="glyphicon glyphicon-plus"></i>
-                Save
-                Filters
-            </button>
-
             </br>
 
             <div id="saveFilterGroupDialog" hidden="hidden">
 
-            <textarea height="49px"  ng-show="showErrorMessage"
-                       ng-model="saveFilterGroupErrorMessage"></textarea>
+                <div saveFilterGroupErrorTextArea>
+                    <textarea id="saveFilterGroupErrorTextArea" height="49px" ng-show="showErrorMessage"
+                              disabled="disabled" ng-model="saveFilterGroupErrorMessage"></textarea>
+
+                </div>
                 </br>
 
                 <label class="label label-primary">Filter Group Description</label>
@@ -105,13 +137,12 @@
                        type="text"
                        placeholder="Filter Group Description..."
                        ng-model="saveFilterGroupForm.filterGroupDescription">
-                <button class="btn btn-primary" ng-click="saveFilterGroup()"><i class="glyphicon glyphicon-search"></i> Ok
+                <button class="btn btn-primary" ng-click="saveFilterGroup()"><i class="glyphicon glyphicon-search"></i>
+                    Ok
                 </button>
 
             </div>
 
-            <button class="btn btn-primary" ng-click="searchTweets()"><i class="glyphicon glyphicon-search"></i> Search
-            </button>
 
             <div class="tweets" ng-show="tweets.length>0">
 
@@ -126,7 +157,6 @@
                     <hr>
                     <strong>Sentiment analysis: {{tweet.categories}}</strong>
                 </div>
-
             </div>
 
 
@@ -154,6 +184,7 @@
 
     <!-- Angular JS -->
     <script src="resources/js/angular/angular.min.js"></script>
+    <script type="text/javascript" src="resources/js/angular/angular-cookies.js"></script>
 
     <!-- Main Application JS -->
     <script src="resources/js/twitter-boost.app.js"></script>

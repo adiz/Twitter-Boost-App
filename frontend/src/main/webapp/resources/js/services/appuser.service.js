@@ -7,6 +7,10 @@
 
             getRandomAppUser: function(){
                 return $http.get(ROOT_CONTEXT + '/users/test');
+            },
+
+            logoutUser: function(){
+                return $http.post(ROOT_CONTEXT + '/logout');
             }
 
         }

@@ -56,7 +56,7 @@ public class FilterGroupPreference extends BaseEntity {
     public String getViewDescription() {
         StringBuilder viewDescription = new StringBuilder(filterGroupDescription + ":");
         for (SavedFilter filter : filters) {
-            viewDescription.append(filter.getFilterCategory() + " = " + filter.getFilterContent());
+            viewDescription.append(filter.getFilterCategory() + ": " + filter.getFilterContent()+"\n");
         }
 
         return viewDescription.toString();

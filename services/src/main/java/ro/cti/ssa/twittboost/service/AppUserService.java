@@ -3,6 +3,7 @@ package ro.cti.ssa.twittboost.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ro.cti.ssa.twittboost.dao.AppUserRepository;
+import ro.cti.ssa.twittboost.exception.AppUserCreationException;
 import ro.cti.ssa.twittboost.framework.IAppUserService;
 import ro.cti.ssa.twittboost.model.AppUser;
 
@@ -16,8 +17,24 @@ public class AppUserService implements IAppUserService {
     @Autowired
     private AppUserRepository appUserRepository;
 
-    public AppUser getTestUser() {
-        return appUserRepository.findOne(1);
+    public AppUser getUserByUsername(String username) {
+
+        return appUserRepository.findByUsername(username);
+
+    }
+
+    public boolean registerAppUser(AppUser appUser) throws AppUserCreationException {
+
+        AppUser existingUser = appUserRepository.findByUsername(appUser.getUsername());
+        if (existingUser != null)
+            throw new AppUserCreationException("Error: User already exists!");
+
+        appUser.setRole("user");
+        AppUser newUser = appUserRepository.save(appUser);
+        if (newUser != null)
+            return true;
+        else
+            throw new AppUserCreationException("User could not be created! Please retry.");
     }
 
     public AppUser getUserByName(String userName) {

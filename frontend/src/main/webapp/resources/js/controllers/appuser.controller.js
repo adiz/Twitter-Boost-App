@@ -1,19 +1,16 @@
 (function(){
 
-    var app = angular.module('appuser-controller', ['appuser-service']);
+    var app = angular.module('appuser-controller', ['appuser-service','ngCookies']);
 
-    app.controller('AppUserController', function($scope, AppUserService){
+    app.controller('AppUserController', function($scope, $rootScope, $window, $cookies, AppUserService){
 
-        $scope.showLoginForm = true;
+        $scope.user = {'username':$cookies.currentUsername, 'password':$cookies.currentRole};
 
-        $scope.testUser = function(){
-            AppUserService.getRandomAppUser().success(function(data){
-                // for testing purposes
-                console.log(data);
-                $scope.showLoginForm = false;
+        $scope.logout = function(){
+            AppUserService.logoutUser().success(function(data){
+                $window.location.replace(ROOT_CONTEXT + '/login');
             });
-
-        };
+        }
 
     });
 

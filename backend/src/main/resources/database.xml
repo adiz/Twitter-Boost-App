@@ -18,6 +18,9 @@
             <column name="PASSWORD" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
+            <column name="ROLE" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
 
         <createTable tableName="TWEET">
@@ -65,14 +68,26 @@
             </column>
         </createTable>
 
+        <addForeignKeyConstraint baseColumnNames="FILTER_GROUP_ID"
+                                 baseTableName="SAVED_FILTERS"
+                                 constraintName="fk_filter_group_preferences"
+                                 onDelete="CASCADE"
+                                 referencedColumnNames="id"
+                                 referencedTableName="FILTER_GROUP_PREFERENCES"/>
 
     </changeSet>
 
     <changeSet id="2" author="adrian.zamfirescu">
 
         <insert tableName="APPUSER">
-            <column name="USERNAME">johndoe</column>
-            <column name="PASSWORD">unknown</column>
+            <column name="USERNAME">livia</column>
+            <column name="PASSWORD">1234</column>
+            <column name="ROLE">user</column>
+        </insert>
+        <insert tableName="APPUSER">
+            <column name="USERNAME">adi</column>
+            <column name="PASSWORD">1234</column>
+            <column name="ROLE">user</column>
         </insert>
 
     </changeSet>
@@ -97,17 +112,6 @@
             <column name="FILTER_CONTENT">time</column>
         </insert>
 
-    </changeSet>
-
-
-
-    <changeSet id="4" author="livia.moroianu" >
-        <addForeignKeyConstraint baseColumnNames="FILTER_GROUP_ID"
-                                 baseTableName="SAVED_FILTERS"
-                                 constraintName="fk_filter_group_preferences"
-                                 onDelete="CASCADE"
-                                 referencedColumnNames="id"
-                                 referencedTableName="FILTER_GROUP_PREFERENCES"/>
     </changeSet>
 
 

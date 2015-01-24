@@ -32,6 +32,7 @@ public class FilterGroupService implements IFilterGroupService {
         FilterGroupPreference filterGroupPreference = new FilterGroupPreference();
         filterGroupPreference.setFilterGroupDescription(filterGroupFormData.getFilterGroupDescription());
         filterGroupPreference.setUser(user);
+
         List<String> filters = filterGroupFormData.getFilters();
         Set<SavedFilter> savedFilters = filterGroupPreference.getFilters();
         for (int index = 0; index < filters.size(); index++) {
@@ -45,6 +46,7 @@ public class FilterGroupService implements IFilterGroupService {
         if (!filterGroupFormData.getUsername().isEmpty()) {
             SavedFilter savedFilter = new SavedFilter(Filters.USER_NAME.toString(), filterGroupFormData.getUsername());
             savedFilter.setFilterGroup(filterGroupPreference);
+            savedFilters.add(savedFilter);
         }
 
         filterGroupRepository.save(filterGroupPreference);

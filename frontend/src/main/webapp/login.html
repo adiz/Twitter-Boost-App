@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
         "http://www.w3.org/TR/html4/loose.dtd">
-<html ng-app='twitter-boost-app'>
+<html ng-app='twitter-boost-app-login'>
 
 <head>
 
@@ -20,39 +20,73 @@
 
 <body ng-cloak class="ng-cloak">
 
-<div class="center-block well login-box" ng-controller='AppUserController'>
+<div class="center-block img-container">
+    <img src="resources/img/welcome-login.png">
+</div>
 
-    <fieldset ng-show='showLoginForm'>
-        <input class="form-control space-below" type="text" placeholder="Any Username...">
-        <input class="form-control space-below" type="password" placeholder="Any Password...">
-        <button class="btn btn-primary" ng-click='testUser()'>Login</button>
-    </fieldset>
+<div class="center-block well login-box" ng-controller='LoginController'>
 
-    <span ng-hide='showLoginForm'>
-        <strong>Welcome, you sexy bastard!</strong>
-    </span>
+    <div ng-show="showLoginForm">
+
+        <fieldset>
+            <input class="form-control login-space-below" type="text" placeholder="Username..." ng-model="user.username">
+            <input class="form-control login-space-below" type="password" placeholder="Password..." ng-model="user.password">
+            <button class="btn btn-primary" ng-click='loginUser()'>Login</button>
+        </fieldset>
+
+        <div class="center-block alert alert-danger alert-below" role="alert" ng-show="loginError">
+            <strong>{{loginError}}</strong>
+        </div>
+
+        <div class="register-text" ng-click="setRegisterView()">Don't have an account?</br> Create it here.</div>
+
+    </div>
+
+    <div ng-hide="showLoginForm">
+
+        <h1>Register:</h1>
+        <hr>
+        <fieldset ng-hide="registerSuccess">
+            <label>Username: </label><input class="form-control login-space-below" type="text" ng-model="user.username">
+            <label>Password: </label><input class="form-control login-space-below" type="password" ng-model="user.password">
+            <button class="btn btn-primary" ng-click='registerUser()'>Submit</button>
+        </fieldset>
+
+        <div class="center-block alert alert-danger alert-below" role="alert" ng-show="registerError">
+            <strong>{{registerError}}</strong>
+        </div>
+        <div class="center-block alert alert-success alert-below" role="alert" ng-show="registerSuccess">
+            <strong>{{registerSuccess}}</strong>
+        </div>
+
+        <div class="register-text" ng-click="setLoginView()">Go back to login page.</div>
+
+    </div>
 
 </div>
+
+
 
     <!-------SCRIPTS-------->
 
     <!-- jQuery -->
-    <script src="resources/js/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="resources/js/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap JS -->
-    <script src="resources/js/bootstrap/bootstrap.min.js"></script>
+    <script type="text/javascript" src="resources/js/bootstrap/bootstrap.min.js"></script>
 
     <!-- Angular JS -->
-    <script src="resources/js/angular/angular.min.js"></script>
+    <script type="text/javascript" src="resources/js/angular/angular.min.js"></script>
+    <script type="text/javascript" src="resources/js/angular/angular-cookies.js"></script>
 
     <!-- Main Application JS -->
-    <script src="resources/js/twitter-boost.app.js"></script>
+    <script type="text/javascript" src="resources/js/twitter-boost-login.app.js"></script>
     <!-- Controllers -->
-    <script src="resources/js/controllers/appuser.controller.js"></script>
+    <script type="text/javascript" src="resources/js/controllers/login.controller.js"></script>
     <!-- Services -->
-    <script src="resources/js/services/appuser.service.js"></script>
+    <script type="text/javascript" src="resources/js/services/login.service.js"></script>
     <!-- Other -->
-    <script src="resources/js/config.js"></script>
+    <script type="text/javascript" src="resources/js/config.js"></script>
 
 </body>
 
