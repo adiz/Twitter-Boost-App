@@ -17,11 +17,13 @@ public class AppUserService implements IAppUserService {
     @Autowired
     private AppUserRepository appUserRepository;
 
+
     public AppUser getUserByUsername(String username) {
 
         return appUserRepository.findByUsername(username);
 
     }
+
 
     public boolean registerAppUser(AppUser appUser) throws AppUserCreationException {
 

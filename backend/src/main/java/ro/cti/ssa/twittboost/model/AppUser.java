@@ -17,7 +17,6 @@ public class AppUser extends BaseEntity {
     private Set<FilterGroupPreference> savedPreferences = new HashSet<FilterGroupPreference>();
     private String role;
 
-
     @Column(name = "USERNAME")
     public String getUsername() {
         return username;
@@ -36,7 +35,6 @@ public class AppUser extends BaseEntity {
         this.password = password;
     }
 
-
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     public Set<FilterGroupPreference> getSavedPreferences() {
         return savedPreferences;
@@ -54,6 +52,5 @@ public class AppUser extends BaseEntity {
     public void setRole(String role) {
         this.role = role;
     }
-
 
 }
